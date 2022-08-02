@@ -9,17 +9,30 @@ void AFinalHUD::BeginPlay()
 
 	if (Crosshair == nullptr) return;
 
-	UCrosshairWidget* Temp = Cast<UCrosshairWidget>(Crosshair);
+	Crosshair_CPP = Cast<UCrosshairWidget>(Crosshair);
 
-	Temp = CreateWidget<UCrosshairWidget>(UGameplayStatics::GetPlayerController(GetWorld(), 0), Crosshair);
+	Crosshair_CPP = CreateWidget<UCrosshairWidget>(UGameplayStatics::GetPlayerController(GetWorld(), 0), Crosshair);
 
-	if (Temp == nullptr) return;
+	if (Crosshair_CPP == nullptr) return;
 
-	Temp->AddToViewport(0);
-
-	Temp->UCrosshairWidget::DebugTest();
+	Crosshair_CPP->AddToViewport(0);
 
 	UE_LOG(LogTemp, Warning, TEXT("Widget Instanced."));
+}
+
+void AFinalHUD::MoveReticleX(float AxisValue)
+{
+	Crosshair_CPP->MoveX(AxisValue);
+}
+
+void AFinalHUD::MoveReticleY(float AxisValue)
+{
+	Crosshair_CPP->MoveY(AxisValue);
+}
+
+FVector2D AFinalHUD::GetImageCoords()
+{
+	return Crosshair_CPP->GetImageCoords();
 }
 
 

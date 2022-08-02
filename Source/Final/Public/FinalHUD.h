@@ -21,8 +21,16 @@ private:
 
 	virtual void BeginPlay() override;
 
+	UCrosshairWidget* Crosshair_CPP;
+
 public:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Crosshair Widget")
 	TSubclassOf<UCrosshairWidget> Crosshair = nullptr;
+
+	void MoveReticleX(float AxisValue);
+
+	void MoveReticleY(float AxisValue);
+
+	FVector2D GetImageCoords();
 };

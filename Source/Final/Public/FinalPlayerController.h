@@ -3,6 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "FinalHUD.h"
+#include "Kismet/GameplayStatics.h"
 #include "GameFramework/PlayerController.h"
 #include "FinalPlayerController.generated.h"
 
@@ -14,6 +16,8 @@ class FINAL_API AFinalPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 
-public:
+private:
 
+public:
+	
 };

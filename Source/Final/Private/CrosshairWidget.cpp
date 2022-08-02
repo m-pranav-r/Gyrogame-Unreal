@@ -7,12 +7,34 @@
 void UCrosshairWidget::NativeConstruct()
 {
 	UE_LOG(LogTemp, Warning, TEXT("Widget Created."));
+
+	RTTemp.X = 0.0f;
+
+	RTTemp.Y = 0.0f;
+
+	ImageDefPos = FVector2D(GEngine->GameViewport->Viewport->GetSizeXY());
+
+	ImageDefPos = FVector2D(ImageDefPos.X/2, ImageDefPos.Y/2);
 }
 
-void UCrosshairWidget::DebugTest()
+void UCrosshairWidget::MoveX(float AxisValue)
 {
-	if (CrosshairText == nullptr) return;
+	RTTemp.X+= AxisValue;
 
-	CrosshairText->SetText(FText::AsNumber(456));
+	CrosshairImage->SetRenderTranslation(RTTemp);
+}
+
+void UCrosshairWidget::MoveY(float AxisValue)
+{
+	RTTemp.Y+= AxisValue;
+
+	CrosshairImage->SetRenderTranslation(RTTemp);
+}
+
+FVector2D UCrosshairWidget::GetImageCoords()
+{
+	UE_LOG(LogTemp, Warning, TEXT("X = %f, Y = %f"),ImageDefPos.X + RTTemp.X, ImageDefPos.Y + RTTemp.Y);
+
+	return FVector2D(ImageDefPos.X + RTTemp.X, ImageDefPos.Y + RTTemp.Y);
 }
 

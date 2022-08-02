@@ -6,6 +6,7 @@
 #include "Blueprint/UserWidget.h"
 #include "Components/Image.h"
 #include "Components/CanvasPanel.h"
+#include "Components/CanvasPanelSlot.h"
 #include "Components/TextBlock.h"
 #include "CrosshairWidget.generated.h"
 
@@ -30,8 +31,15 @@ private:
 
 	virtual void NativeConstruct();
 
+	FVector2D RTTemp;
+
+	FVector2D ImageDefPos;
+
 public:
 
-	void DebugTest();
+	void MoveX(float AxisValue);
+
+	void MoveY(float AxisValue);
 	
+	FVector2D GetImageCoords();
 };
