@@ -38,3 +38,8 @@ FVector2D UCrosshairWidget::GetImageCoords()
 	return FVector2D(ImageDefPos.X + RTTemp.X, ImageDefPos.Y + RTTemp.Y);
 }
 
+void UCrosshairWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
+{
+
+}
+

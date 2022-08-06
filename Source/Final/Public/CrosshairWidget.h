@@ -42,4 +42,6 @@ public:
 	void MoveY(float AxisValue);
 	
 	FVector2D GetImageCoords();
+
+	virtual void NativeTick(const FGeometry& MyGeometry, float InDeltaTime) override;
 };

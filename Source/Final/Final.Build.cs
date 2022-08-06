@@ -10,6 +10,8 @@ public class Final : ModuleRules
 	
 		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore" });
 
+		PublicAdditionalLibraries.Add(@"C:/Users/91995/Documents/Unreal Projects/Final/Binaries/Win64/SDL2.lib");
+
 		PrivateDependencyModuleNames.AddRange(new string[] {  });
 
 		// Uncomment if you are using Slate UI

@@ -14,7 +14,7 @@ APlayerPawn::APlayerPawn()
 // Called when the game starts or when spawned
 void APlayerPawn::BeginPlay()
 {
-	Super::BeginPlay();
+	/*Super::BeginPlay();
 	
 	HUDObj = Cast<AFinalHUD>(UGameplayStatics::GetPlayerController(GetWorld(), 0)->GetHUD());
 
@@ -22,7 +22,7 @@ void APlayerPawn::BeginPlay()
 
 	UE_LOG(LogTemp, Warning, TEXT("PlayerPawn has caught HUD."));
 
-	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ATestActor::StaticClass(), ActorArray);
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ATestActor::StaticClass(), ActorArray);*/
 }
 
 // Called every frame
@@ -35,7 +35,7 @@ void APlayerPawn::Tick(float DeltaTime)
 // Called to bind functionality to input
 void APlayerPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
+	/*Super::SetupPlayerInputComponent(PlayerInputComponent);
 
 	InputComponent->BindAxis("MoveReticleX", this, &APlayerPawn::MoveCrosshairX);
 
@@ -43,7 +43,7 @@ void APlayerPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 
 	InputComponent->BindAction("TestReticle", IE_Pressed, this, &APlayerPawn::SendHitRay);
 
-	UE_LOG(LogTemp, Warning, TEXT("Bindings complete."));
+	UE_LOG(LogTemp, Warning, TEXT("Bindings complete."));*/
 
 }
 
