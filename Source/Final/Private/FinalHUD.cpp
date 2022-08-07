@@ -30,6 +30,11 @@ void AFinalHUD::MoveReticleY(float AxisValue)
 	Crosshair_CPP->MoveY(AxisValue);
 }
 
+void AFinalHUD::MoveReticle(float Axis1, float Axis2)
+{
+	Crosshair_CPP->Move(Axis1, Axis2);
+}
+
 FVector2D AFinalHUD::GetImageCoords()
 {
 	return Crosshair_CPP->GetImageCoords();

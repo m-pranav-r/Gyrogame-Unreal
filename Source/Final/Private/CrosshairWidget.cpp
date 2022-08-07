@@ -31,6 +31,15 @@ void UCrosshairWidget::MoveY(float AxisValue)
 	CrosshairImage->SetRenderTranslation(RTTemp);
 }
 
+void UCrosshairWidget::Move(float Axis1, float Axis2)
+{
+	RTTemp.X += Axis1;
+	
+	RTTemp.Y += Axis2;
+
+	CrosshairImage->SetRenderTranslation(RTTemp);
+}
+
 FVector2D UCrosshairWidget::GetImageCoords()
 {
 	UE_LOG(LogTemp, Warning, TEXT("X = %f, Y = %f"),ImageDefPos.X + RTTemp.X, ImageDefPos.Y + RTTemp.Y);

@@ -40,6 +40,8 @@ public:
 	void MoveX(float AxisValue);
 
 	void MoveY(float AxisValue);
+
+	void Move(float Axis1, float Axis2);
 	
 	FVector2D GetImageCoords();
 
