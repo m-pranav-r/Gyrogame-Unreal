@@ -47,21 +47,6 @@ void APlayerPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 
 }
 
-void APlayerPawn::MoveCrosshairX(float AxisValue)
-{
-	if (FMath::Abs(AxisValue) >= Deadzone_Left)
-	{
-		HUDObj->MoveReticleX((AxisValue - Axis_Offset) * Speed_Left);
-	}
-}
-
-void APlayerPawn::MoveCrosshairY(float AxisValue)
-{
-	if (FMath::Abs(AxisValue) >= Deadzone_Left)
-	{
-		HUDObj->MoveReticleY((AxisValue - Axis_Offset) * Speed_Left);
-	}
-}
 
 void APlayerPawn::SendHitRay()
 {

@@ -54,10 +54,6 @@ private:
 
 	class AFinalHUD* HUDObj;
 
-	void MoveCrosshairX(float AxisValue);
-
-	void MoveCrosshairY(float AxisValue);
-
 	TArray<AActor*> ActorArray;
 
 	int32 ActorDist = 0;

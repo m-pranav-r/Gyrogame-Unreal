@@ -20,19 +20,14 @@ void AFinalHUD::BeginPlay()
 	UE_LOG(LogTemp, Warning, TEXT("Widget Instanced."));
 }
 
-void AFinalHUD::MoveReticleX(float AxisValue)
-{
-	Crosshair_CPP->MoveX(AxisValue);
-}
+//void AFinalHUD::MoveReticle(float Axis1, float Axis2)
+//{
+//	Crosshair_CPP->Move(Axis1, Axis2,);
+//}
 
-void AFinalHUD::MoveReticleY(float AxisValue)
+void AFinalHUD::SetReticle(float Axis1, float Axis2)
 {
-	Crosshair_CPP->MoveY(AxisValue);
-}
-
-void AFinalHUD::MoveReticle(float Axis1, float Axis2)
-{
-	Crosshair_CPP->Move(Axis1, Axis2);
+	Crosshair_CPP->Set(Axis1, Axis2);
 }
 
 FVector2D AFinalHUD::GetImageCoords()

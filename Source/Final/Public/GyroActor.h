@@ -4,15 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+
 #include "Kismet/GameplayStatics.h"
 #include "FinalPlayerController.h"
-#include "FinalHUD.h"
-#include "PlayerPawn.h"
 #include "SDL/SDL.h"
 #include "GamepadMotionHelpers/GamepadMotion.hpp"
-
-#include "TimerManager.h"
 #include "Components/StaticMeshComponent.h"
+#include "TimerManager.h"
 
 #include "GyroActor.generated.h"
 
@@ -25,6 +23,8 @@ public:
 	// Sets default values for this actor's properties
 	AGyroActor();
 
+	void StopCalib();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -35,47 +35,27 @@ public:
 
 private:
 
-	UPROPERTY(EditAnywhere, Category = "Gyro")
-	float GyroRollScale = 1.0f;
-
-	UPROPERTY(EditAnywhere, Category = "Gyro")
-	float GyroPitchScale = 1.0f;
-
-	float TimeElapsed = 0.0f;
-
-	bool calib = false;
-
-	bool calibdone = false;
+	AFinalPlayerController* PC = nullptr;
 
 	SDL_GameController* MC = nullptr;
 
 	GamepadMotion MCGM;
 
-	float Gyro[3] = {0,0,0};
+	float Gyro[3], Accel[3], Corrected[3], RadToDeg = 180.0f / M_PI;
 
-	float Accel[3] = {0,0,0};
+	FRotator CorGyr;
 
-	float Corrected[3] = {0,0,0};
-
-	UPROPERTY(EditAnywhere, Category = "Gyro")
-	float GyroOffset[3] = { -0.002756f, 0.001150f, 0.003473f};
-
-	UPROPERTY(EditAnywhere, Category = "Gyro")
-	float AccelOffset[3] = { 0.355932f, 9.224708f, 1.960240f};
-
-	FRotator CorGyr = {0,0,0};
-
-	FVector GyroEuler;
-
-	UPROPERTY(EditDefaultsOnly, Category = "Player Pawn Instance")
-	TSubclassOf<APlayerPawn> PP;
+	FTimerHandle CalibHandle;
 
 	UPROPERTY(EditAnywhere, Category = "Mesh")
-	UStaticMeshComponent* MainMesh;
+	UStaticMeshComponent* MeshComp;
 
-	USceneComponent* RootComponent;
+	UPROPERTY(EditAnywhere, Category = "Gyro Settings")
+	float PitchScale = 1.0f;
 
-	AFinalPlayerController* PC;
+	UPROPERTY(EditAnywhere, Category = "Gyro Settings")
+	float YawScale = 1.0f;
 
-	AFinalHUD* HUD;
+	UPROPERTY(EditAnywhere, Category = "Gyro Settings")
+	float RollScale = 1.0f;
 };

@@ -34,5 +34,7 @@ public:
 
 	void MoveReticle(float Axis1, float Axis2);
 
+	void SetReticle(float Axis1, float Axis2);
+
 	FVector2D GetImageCoords();
 };

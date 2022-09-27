@@ -3,9 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "FinalHUD.h"
 #include "SDL/SDL.h"
-#include "Kismet/GameplayStatics.h"
+#include "GamepadMotionHelpers/GamepadMotion.hpp"
 #include "TimerManager.h"
 #include "GameFramework/PlayerController.h"
 #include "FinalPlayerController.generated.h"
@@ -20,19 +19,35 @@ class FINAL_API AFinalPlayerController : public APlayerController
 
 private:
 
-	void InitControllerCalib();
-
 	SDL_GameController* MainController = nullptr;
 
-	float Gyro[3];
+	GamepadMotion MainControllerGM;
 
-	float Accel[3];
+	FTimerHandle CalibHandle;
 
-	float AccelOffset[3];
+	UPROPERTY(EditAnywhere, Category = "Gyro Settings")
+	float GyroRollScale = 1.0f;
+
+	UPROPERTY(EditAnywhere, Category = "Gyro Settings")
+	float GyroPitchScale= 1.0f;
+
+	UPROPERTY(EditAnywhere, Category = "Gyro Settings")
+	float TempScale = 1.0f;
+
+	UPROPERTY(EditAnywhere, Category = "Hitscan Settings")
+		float Radius = 1.0f;
 
 public:
 
 	virtual void BeginPlay() override;
 
 	SDL_GameController* GetSDLController();
+
+	float GetRollScale();
+
+	float GetPitchScale();
+
+	float GetTempScale();
+
+	float GetSphereRadius();
 };

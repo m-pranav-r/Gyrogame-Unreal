@@ -8,6 +8,10 @@
 #include "Components/CanvasPanel.h"
 #include "Components/CanvasPanelSlot.h"
 #include "Components/TextBlock.h"
+#include "SDL/SDL.h"
+#include "GamepadMotionHelpers/GamepadMotion.hpp"
+#include "Kismet/GameplayStatics.h"
+#include "FinalPlayerController.h"
 #include "CrosshairWidget.generated.h"
 
 /**
@@ -26,22 +30,31 @@ private:
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
 	UImage* CrosshairImage;
 
-	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
-	UTextBlock* CrosshairText;
-
 	virtual void NativeConstruct();
+
+	void StopControllerCalib();
 
 	FVector2D RTTemp;
 
 	FVector2D ImageDefPos;
 
+	float TempShear = 0.0f;
+
+	float TempScale;
+
+	SDL_GameController* MainController = nullptr;
+
+	GamepadMotion MainControllerGM;
+	
+	float Gyro[3], Accel[3], Corrected[3], GyroPitchScale, GyroRollScale;
+
+	FTimerHandle CalibHandle;
+
 public:
 
-	void MoveX(float AxisValue);
+	void Move(float Axis1, float Axis2, float Axis3);
 
-	void MoveY(float AxisValue);
-
-	void Move(float Axis1, float Axis2);
+	void Set(float Axis1, float Axis2);
 	
 	FVector2D GetImageCoords();
 
